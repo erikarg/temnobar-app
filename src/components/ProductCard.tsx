@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#1e1e2e",
     lineHeight: 18,
+    height: 36,
   } as TextStyle,
   statusDot: {
     width: 8,
