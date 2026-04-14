@@ -234,7 +234,7 @@ export function ProductForm({ product, barId }: Props) {
           onPress={handleSubmit(onSubmit)}
           style={styles.flex1}
         >
-          {product ? "Salvar alteracoes" : "Criar produto"}
+          {product ? "Salvar alterações" : "Criar produto"}
         </Button>
       </View>
     </ScrollView>
