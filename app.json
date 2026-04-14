@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "TemNoBar",
+    "slug": "temnobar-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6366f1"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.temnobar.mobile"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6366f1"
+      },
+      "package": "com.temnobar.mobile",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
+    },
+    "plugins": [
+      "expo-image-picker",
+      "expo-asset"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9dd20690-7b64-4df7-b802-181355123cff"
+      }
+    },
+    "owner": "erikargs-organization"
+  }
+}
