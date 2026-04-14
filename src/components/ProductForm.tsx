@@ -44,7 +44,11 @@ export function ProductForm({ product, barId }: Props) {
   const [imageUrl, setImageUrl] = useState(product?.foto_produto ?? "");
   const [thumbUrl, setThumbUrl] = useState(product?.thumb_produto ?? "");
   const [preview, setPreview] = useState<string | null>(
-    product?.thumb_produto ? `${API_BASE}${product.thumb_produto}` : null,
+    product?.thumb_produto
+      ? product.thumb_produto.startsWith("http")
+        ? product.thumb_produto
+        : `${API_BASE}${product.thumb_produto}`
+      : null,
   );
 
   const {
