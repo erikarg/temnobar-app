@@ -53,21 +53,17 @@ export function HomeScreen({ navigation }: Props) {
   };
 
   const handleDelete = (product: Product) => {
-    Alert.alert(
-      "Excluir produto",
-      `Excluir "${product.descricao_produto}"?`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Excluir",
-          style: "destructive",
-          onPress: async () => {
-            await deleteProduct(product.id);
-            reload();
-          },
+    Alert.alert("Excluir produto", `Excluir "${product.descricao_produto}"?`, [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Excluir",
+        style: "destructive",
+        onPress: async () => {
+          await deleteProduct(product.id);
+          reload();
         },
-      ],
-    );
+      },
+    ]);
   };
 
   const statusOptions = ["ALL", "ACTIVE", "INACTIVE"] as const;
@@ -101,7 +97,7 @@ export function HomeScreen({ navigation }: Props) {
       </View>
 
       <TextInput
-        placeholder="Buscar por descricao..."
+        placeholder="Buscar por descrição..."
         placeholderTextColor="#a1a1aa"
         value={search}
         onChangeText={setSearch}

@@ -26,7 +26,7 @@ export function EditProductScreen({ route }: Props) {
   useEffect(() => {
     getProduct(id)
       .then(setProduct)
-      .catch(() => setError("Produto nao encontrado"))
+      .catch(() => setError("Produto não encontrado"))
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -43,7 +43,7 @@ export function EditProductScreen({ route }: Props) {
   if (error || !product) {
     return (
       <View style={styles.center}>
-        <Text style={styles.error}>{error || "Produto nao encontrado"}</Text>
+        <Text style={styles.error}>{error || "Produto não encontrado"}</Text>
       </View>
     );
   }

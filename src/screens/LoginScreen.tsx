@@ -61,9 +61,7 @@ export function LoginScreen({ navigation }: Props) {
             <Text style={styles.logoText}>T</Text>
           </View>
           <Text style={styles.title}>TemNoBar</Text>
-          <Text style={styles.subtitle}>
-            Gerencie os produtos do seu bar
-          </Text>
+          <Text style={styles.subtitle}>Gerencie os produtos do seu bar</Text>
         </View>
 
         <View style={styles.card}>
@@ -118,7 +116,7 @@ export function LoginScreen({ navigation }: Props) {
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Nao tem conta? </Text>
+          <Text style={styles.footerText}>Não tem conta? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
             <Text style={styles.link}>Registre-se</Text>
           </TouchableOpacity>

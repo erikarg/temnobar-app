@@ -25,8 +25,8 @@ import { API_BASE } from "@/services/api";
 import type { Product } from "@/types/product";
 
 const schema = z.object({
-  codigo_produto: z.string().min(1, "Codigo obrigatorio"),
-  descricao_produto: z.string().min(1, "Descricao obrigatoria"),
+  codigo_produto: z.string().min(1, "Código obrigatório"),
+  descricao_produto: z.string().min(1, "Descrição obrigatória"),
   status: z.enum(["ACTIVE", "INACTIVE"]),
 });
 
@@ -167,7 +167,7 @@ export function ProductForm({ product, barId }: Props) {
         name="descricao_produto"
         render={({ field: { onChange, onBlur, value } }) => (
           <Input
-            label="Descricao"
+            label="Descrição"
             placeholder="Ex: Cerveja IPA 500ml"
             value={value}
             onChangeText={onChange}
