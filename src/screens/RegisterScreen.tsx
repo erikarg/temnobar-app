@@ -45,8 +45,8 @@ export function RegisterScreen({ navigation }: Props) {
       await register(data.name, data.email, data.password);
     } catch (err: unknown) {
       const message =
-        (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Erro ao criar conta";
+        (err as { response?: { data?: { error?: { message?: string } } } })
+          ?.response?.data?.error?.message || "Erro ao criar conta";
       setError(message);
     }
   };

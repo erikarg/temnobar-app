@@ -66,8 +66,8 @@ export function SelectBarScreen() {
       await selectBar(bar.id);
     } catch (err: unknown) {
       const message =
-        (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Erro ao criar bar";
+        (err as { response?: { data?: { error?: { message?: string } } } })
+          ?.response?.data?.error?.message || "Erro ao criar bar";
       setError(message);
       setCreating(false);
     }

@@ -105,8 +105,8 @@ export function ProductForm({ product, barId }: Props) {
       navigation.goBack();
     } catch (err: unknown) {
       const message =
-        (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Erro ao salvar produto";
+        (err as { response?: { data?: { error?: { message?: string } } } })
+          ?.response?.data?.error?.message || "Erro ao salvar produto";
       setError(message);
     }
   };
