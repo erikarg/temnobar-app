@@ -3,16 +3,15 @@ import type { User } from "@/types/user";
 
 type LoginInput = { email: string; password: string };
 type RegisterInput = { email: string; password: string; name: string };
-type LoginResponse = { user: User; token: string };
 
-export async function login(data: LoginInput): Promise<LoginResponse> {
+export async function login(data: LoginInput): Promise<User> {
   const res = await api.post("/auth/login", data);
-  return { user: res.data.user, token: res.data.token };
+  return res.data.user;
 }
 
-export async function register(data: RegisterInput): Promise<LoginResponse> {
+export async function register(data: RegisterInput): Promise<User> {
   const res = await api.post("/auth/register", data);
-  return { user: res.data.user, token: res.data.token };
+  return res.data.user;
 }
 
 export async function getMe(): Promise<User> {

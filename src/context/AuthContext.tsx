@@ -6,8 +6,6 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { TOKEN_KEY } from "@/services/api";
 import {
   login as loginService,
   register as registerService,
@@ -54,24 +52,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       setUser(null);
       setBarName(null);
-      await AsyncStorage.removeItem(TOKEN_KEY);
     }
   }, [loadBarName]);
 
+  // Sem token local: a sessao vive no cookie, entao /auth/me diz se ela existe.
   useEffect(() => {
-    (async () => {
-      const token = await AsyncStorage.getItem(TOKEN_KEY);
-      if (token) {
-        await refreshUser();
-      }
-      setLoading(false);
-    })();
+    refreshUser().finally(() => setLoading(false));
   }, [refreshUser]);
 
   const login = useCallback(
     async (email: string, password: string) => {
-      const { user: u, token } = await loginService({ email, password });
-      await AsyncStorage.setItem(TOKEN_KEY, token);
+      const u = await loginService({ email, password });
       setUser(u);
       if (u.bar_id) await loadBarName(u.bar_id);
       return u;
@@ -81,12 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const register = useCallback(
     async (name: string, email: string, password: string) => {
-      const { user: u, token } = await registerService({
-        name,
-        email,
-        password,
-      });
-      await AsyncStorage.setItem(TOKEN_KEY, token);
+      const u = await registerService({ name, email, password });
       setUser(u);
       return u;
     },
@@ -104,7 +90,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(async () => {
     await logoutService();
-    await AsyncStorage.removeItem(TOKEN_KEY);
     setUser(null);
     setBarName(null);
   }, []);
