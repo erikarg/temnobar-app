@@ -12,17 +12,12 @@ import type { Product } from "@/types/product";
 
 type Props = {
   product: Product;
-  apiUrl: string;
   onEdit: (product: Product) => void;
   onDelete: (product: Product) => void;
 };
 
-export function ProductCard({ product, apiUrl, onEdit, onDelete }: Props) {
-  const thumbSrc = product.thumb_produto
-    ? product.thumb_produto.startsWith("http")
-      ? product.thumb_produto
-      : `${apiUrl}${product.thumb_produto}`
-    : null;
+export function ProductCard({ product, onEdit, onDelete }: Props) {
+  const thumbSrc = product.thumb_produto;
   const isActive = product.status === "ACTIVE";
 
   return (

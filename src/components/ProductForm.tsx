@@ -21,7 +21,6 @@ import { Input } from "@/components/Input";
 import { Button } from "@/components/Button";
 import { uploadImage } from "@/services/upload.service";
 import { createProduct, updateProduct } from "@/services/product.service";
-import { API_BASE } from "@/services/api";
 import type { Product } from "@/types/product";
 
 const schema = z.object({
@@ -44,11 +43,7 @@ export function ProductForm({ product, barId }: Props) {
   const [imageUrl, setImageUrl] = useState(product?.foto_produto ?? "");
   const [thumbUrl, setThumbUrl] = useState(product?.thumb_produto ?? "");
   const [preview, setPreview] = useState<string | null>(
-    product?.thumb_produto
-      ? product.thumb_produto.startsWith("http")
-        ? product.thumb_produto
-        : `${API_BASE}${product.thumb_produto}`
-      : null,
+    product?.thumb_produto ?? null,
   );
 
   const {

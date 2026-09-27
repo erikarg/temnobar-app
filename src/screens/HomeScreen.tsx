@@ -18,7 +18,6 @@ import { useProducts } from "@/hooks/useProducts";
 import { ProductCard } from "@/components/ProductCard";
 import { Button } from "@/components/Button";
 import { deleteProduct } from "@/services/product.service";
-import { API_BASE } from "@/services/api";
 import type { Product } from "@/types/product";
 import type { AppStackParamList } from "@/navigation/AppNavigator";
 
@@ -73,7 +72,6 @@ export function HomeScreen({ navigation }: Props) {
     <View style={styles.cardWrapper}>
       <ProductCard
         product={item}
-        apiUrl={API_BASE}
         onEdit={handleEdit}
         onDelete={handleDelete}
       />
