@@ -5,6 +5,10 @@ export type Product = {
   status: "ACTIVE" | "INACTIVE";
   foto_produto: string | null;
   thumb_produto: string | null;
+  /** Preco em centavos. */
+  preco: number;
+  tags: string[];
+  category_id: string | null;
   bar_id: string;
   created_at: string;
   updated_at: string;
